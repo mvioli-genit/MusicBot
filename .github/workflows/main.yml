@@ -1,0 +1,27 @@
+name: Deploy Bot Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup node, npm i and cache
+        uses: clutchd/turbostart-npm@v3.0.1
+
+      - name: Deploy via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.ALWAYSDATA_HOST }}
+          username: ${{ secrets.ALWAYSDATA_USER }}
+          password: ${{ secrets.ALWAYSDATA_PASSWORD }}
+          source: './*'
+          target: '/home/discordbotyoutube/discordbot'
+          strip_components: 1
