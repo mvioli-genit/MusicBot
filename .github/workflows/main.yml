@@ -29,4 +29,4 @@ jobs:
           password: ${{ secrets.ALWAYSDATA_PASSWORD }}
           source: './*'
           target: '/home/discordbotyoutube/discordbot'
-          strip_components: 1
+          strip_components: 0
