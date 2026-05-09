@@ -113,6 +113,9 @@ class YouTube {
             const info = await youtubedl(url, this.getYtDlpOptions({
                 dumpSingleJson: true,
                 preferFreeFormats: true,
+                format: 'bestaudio/best',
+                noCheckCertificates: true,
+                noWarnings: true
             }));
 
             if (!info) {
